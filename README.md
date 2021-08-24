@@ -14,3 +14,9 @@ Link for reference:
 https://api.nasa.gov/
 
 ## Screenshots
+<img src="screenshots/Home.png" alt="drawing" width="200"/>
+<img src="screenshots/searchscreen.png" alt="drawing" width="200"/>
+<img src="screenshots/searchname.png" alt="drawing" width="200"/>
+<img src="screenshots/searchdate.png" alt="drawing" width="200"/>
+<img src="screenshots/details.png" alt="drawing" width="200"/>
+<img src="screenshots/preview.png" alt="drawing" width="200"/>
