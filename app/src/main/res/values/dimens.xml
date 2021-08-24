@@ -1,0 +1,22 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="button_text">14sp</dimen>
+
+    <!-- Home Screen -->
+    <dimen name="home_layout_padding">16dp</dimen>
+    <dimen name="home_layout_margin">16dp</dimen>
+    <dimen name="home_title">20sp</dimen>
+    <dimen name="home_copy_text">12sp</dimen>
+    <dimen name="home_description">18sp</dimen>
+
+    <!-- Search Screen -->
+    <dimen name="search_layout_padding">16dp</dimen>
+    <dimen name="search_layout_margin">16dp</dimen>
+    <dimen name="search_search_by_margin">8dp</dimen>
+    <dimen name="search_drawable_padding">10dp</dimen>
+    <dimen name="search_nothing_search">18sp</dimen>
+    <dimen name="search_title">22sp</dimen>
+    <dimen name="search_by">14sp</dimen>
+</resources>

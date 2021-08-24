@@ -1,0 +1,33 @@
+<resources>
+    <string name="app_name">Astronomy Photos</string>
+    <string name="title_home">Daily Picture</string>
+    <string name="title_search">Explore</string>
+    <string name="title_profile">Favorites</string>
+
+    <!-- Home fragment -->
+    <string name="txt_home_title_apod">Picture of the day</string>
+    <string name="txt_home_title_discovery">Discover more pictures</string>
+    <string name="btn_read_more">Read More</string>
+    <string name="btn_read_less">Read Less</string>
+    <string name="txt_copy_right">Copyright: %1$s</string>
+
+
+    <!-- Search fragment-->
+    <string name="txt_search_title">Explore</string>
+    <string name="btn_search_word">Search by keyword</string>
+    <string name="txt_search_nothing">You haven\'t search anything yet</string>
+    <string name="txt_search_hint">Search by a word</string>
+    <string name="txt_search_result">Here your results</string>
+    <string name="txt_search_by">  Or by date</string>
+    <string name="txt_search_date_hint">Or search by date </string>
+    <string name="txt_search_term">Search by %1s: </string>
+    <string name="txt_date">date</string>
+    <string name="txt_word">word</string>
+
+    <!-- Details Activity-->
+    <string name="txt_details_picture_title"> Tile of the picture</string>
+    <string name="txt_details_date"> 2 oct.</string>
+    <string name="text_demo">lorem impsilum bla bla lorem impsilum bla bla lorem impsilum bla bla lorem impsilum bla bla lorem impsilum bla bla lorem impsilum bla bla</string>
+
+
+</resources>

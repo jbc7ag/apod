@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <layout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:paddingBottom="64dp">
+
+        <data>
+            <variable
+                name="SearchViewModel"
+                type="com.jbc7ag.apod.ui.search.SearchViewModel" />
+        </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/grayBackground"
+        android:paddingTop="@dimen/search_layout_margin"
+        tools:context=".ui.home.SearchFragment">
+
+        <LinearLayout
+            android:id="@+id/lv_search"
+            android:layout_width="0dp"
+            android:layout_height="45dp"
+            android:layout_marginTop="@dimen/search_layout_margin"
+            android:layout_marginStart="@dimen/search_layout_margin"
+            android:layout_marginEnd="@dimen/search_layout_margin"
+            android:background="@android:color/white"
+            android:bottomLeftRadius="10dp"
+            android:bottomRightRadius="10dp"
+            android:orientation="vertical"
+            android:topLeftRadius="10dp"
+            android:topRightRadius="10dp"
+            app:layout_constraintEnd_toStartOf="@id/img_search_date"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <SearchView
+                android:id="@+id/searchView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:iconifiedByDefault="false"
+                android:queryBackground="@null"
+                android:queryHint="@string/txt_search_hint" />
+
+        </LinearLayout>
+
+
+        <ImageView
+            android:id="@+id/img_search_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/search_layout_margin"
+            android:layout_marginStart="@dimen/search_layout_margin"
+            android:background="@color/PrimaryText"
+            android:onClick="@{() -> SearchViewModel.openDateDialog()}"
+            android:padding="@dimen/search_drawable_padding"
+            android:src="@drawable/ic_baseline_date_range_24"
+            app:layout_constraintBottom_toBottomOf="@+id/lv_search"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/lv_search"
+            app:layout_constraintTop_toTopOf="@+id/lv_search"
+            app:tint="@color/colorWhite" />
+
+        <TextView
+            android:id="@id/txt_search"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/search_layout_margin"
+            android:layout_marginTop="@dimen/search_layout_margin"
+            android:padding="5dp"
+            tools:text="Search by date:"
+            android:textColor="@color/PrimaryText"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/lv_search" />
+
+        <TextView
+            android:id="@id/txt_search_term"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/search_layout_margin"
+            android:layout_marginStart="@dimen/search_search_by_margin"
+            android:background="@drawable/rounded_corner"
+            android:padding="5dp"
+            android:textColor="@color/colorWhite"
+            app:layout_constraintStart_toEndOf="@+id/txt_search"
+            app:layout_constraintTop_toBottomOf="@+id/lv_search"
+            android:visibility="invisible"
+            tools:text="Sep 10, 2012" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/start_frame"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginBottom="@dimen/search_layout_margin"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:visibility="@{SearchViewModel.showStartImage}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txt_search_term">
+
+
+            <ImageView
+                android:id="@+id/img_no_search_result"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:src="@drawable/ic_baseline_travel_explore_24"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:tint="@color/colorAccent" />
+
+            <TextView
+                android:id="@+id/txt_no_search_result"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/search_layout_margin"
+                android:fontFamily="@font/cabin"
+                android:text="@string/txt_search_nothing"
+                android:textAlignment="center"
+                android:textColor="@color/PrimaryText"
+                android:textSize="@dimen/search_nothing_search"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/img_no_search_result" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/search_grid"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clipToPadding="false"
+            android:orientation="vertical"
+            android:layout_marginTop="@dimen/search_layout_margin"
+            android:visibility="@{SearchViewModel.showImageRv}"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            app:layout_constraintTop_toTopOf="@+id/start_frame"
+            app:listDataSearch="@{SearchViewModel.searchList}"
+            tools:layout_editor_absoluteX="16dp"
+            tools:listitem="@layout/home_search_item"
+            tools:spanCount="2" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/search_cardView"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:layout_margin="@dimen/search_layout_margin"
+            android:visibility="@{SearchViewModel.showApod}"
+            android:onClick="@{() -> SearchViewModel.onApodclick()}"
+            android:orientation="vertical"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="0dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/start_frame">
+
+            <ImageView
+                android:id="@+id/img_picture_day"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                app:imageUrl="@{SearchViewModel.apodProperty.url}"
+                tools:src="@tools:sample/avatars" />
+
+            <View
+                android:id="@+id/view_apod_title"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_gravity="bottom"
+                android:background="@color/blackTransparent" />
+
+            <TextView
+                android:id="@+id/txt_picture_day_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:ellipsize="end"
+                android:maxEms="30"
+                android:maxLines="1"
+                android:text="@{SearchViewModel.apodProperty.title}"
+                android:textColor="@android:color/white"
+                tools:text="Image Titlssdsdsd sdsdsdsdsdse ewewe ewewewe" />
+
+        </androidx.cardview.widget.CardView>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

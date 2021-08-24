@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="title"
+            type="String" />
+        <variable
+            name="date"
+            type="String" />
+        <variable
+            name="content"
+            type="String" />
+        <variable
+            name="url"
+            type="String" />
+    </data>
+
+    <ScrollView
+        tools:context=".ui.details.DetailActivity"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/home_layout_padding"
+            >
+
+            <ImageView
+                android:id="@+id/back"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/abc_vector_test"
+                app:layout_constraintBottom_toBottomOf="@+id/txt_details_title"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/txt_details_title"
+                app:tint="@color/colorPrimary" />
+
+            <TextView
+                android:id="@+id/txt_details_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:fontFamily="@font/cabin"
+                android:text="@{title}"
+                android:textAlignment="center"
+                android:textColor="@color/PrimaryText"
+                android:textSize="@dimen/home_title"
+                android:textStyle="bold"
+                app:layout_constraintStart_toEndOf="@+id/back"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="@string/txt_details_picture_title" />
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardView"
+                android:layout_width="0dp"
+                android:layout_height="250dp"
+                android:layout_marginTop="@dimen/home_layout_margin"
+                android:orientation="vertical"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="0dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txt_details_title">
+
+                <ImageView
+                    android:id="@+id/img_picture_day"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    app:imageUrl="@{url}"
+                    tools:src="@tools:sample/avatars" />
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:id="@+id/txt_details_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/home_layout_margin"
+                android:fontFamily="@font/cabin"
+                tools:text="@string/txt_details_date"
+                app:formatDate="@{date}"
+                android:textAlignment="center"
+                android:textColor="@color/PrimaryText"
+                android:textSize="@dimen/home_title"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cardView" />
+
+
+            <FrameLayout
+                android:id="@+id/discovery_frame"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txt_details_date">
+
+                <TextView
+                    android:id="@+id/txt_details_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="@dimen/home_layout_margin"
+                    android:clipToPadding="false"
+                    android:textColor="@color/PrimaryText"
+                    android:textSize="@dimen/home_title"
+                    tools:text="@string/text_demo"
+                    android:text="@{content}"
+                    android:justificationMode="inter_word"
+                    />
+
+            </FrameLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+</layout>
